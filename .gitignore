@@ -1,3 +1,4 @@
+/barebox/
 /buildroot/dl/binutils-2.21.1.tar.bz2
 /buildroot/dl/gcc-4.7.3.tar.bz2
 /buildroot/dl/gmp-6.0.0a.tar.xz
@@ -7,4 +8,7 @@
 /buildroot/dl/mpfr-3.1.2.tar.xz
 /buildroot/dl
 /buildroot/output
-
+/linux-xlnx/
+/linux-digilent/
+/u-boot-digilent/
+/u-boot-xlnx/

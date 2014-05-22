@@ -1313,7 +1313,7 @@ endif
 ifneq "$(HOSTARCH)" "x86_64"
 /home/jlgutierrez/wr/wr-switch-zynq/buildroot/output/build/buildroot-config/auto.conf: FORCE
 endif
-ifneq "$(BR2_VERSION_FULL)" "2014.05-rc1-gc1e5a41-dirty"
+ifneq "$(BR2_VERSION_FULL)" "2014.05-rc1-g08a2996-dirty"
 /home/jlgutierrez/wr/wr-switch-zynq/buildroot/output/build/buildroot-config/auto.conf: FORCE
 endif
 
