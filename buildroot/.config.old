@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2014.05-rc1-g927b261-dirty Configuration
+# Buildroot 2014.05-rc1-g927b261 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 
@@ -256,8 +256,8 @@ BR2_TOOLCHAIN_HEADERS_AT_LEAST="3.8"
 #
 # System configuration
 #
-BR2_TARGET_GENERIC_HOSTNAME="zedboard-linux"
-BR2_TARGET_GENERIC_ISSUE="Welcome to Zedboard Linux"
+BR2_TARGET_GENERIC_HOSTNAME="buildroot"
+BR2_TARGET_GENERIC_ISSUE="Welcome to Buildroot"
 # BR2_TARGET_GENERIC_PASSWD_DES is not set
 BR2_TARGET_GENERIC_PASSWD_MD5=y
 # BR2_TARGET_GENERIC_PASSWD_SHA256 is not set
