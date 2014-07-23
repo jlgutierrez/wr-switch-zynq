@@ -1,0 +1,6 @@
+the_ROM_image:
+{
+	[bootloader]/home/jlgutierrez/workspace/Zedboard_Linux/Zedboard_Linux.sdk/SDK/SDK_Export/zynq_fbsl_0/Debug/zynq_fbsl_0.elf
+	/home/jlgutierrez/workspace/Zedboard_Linux/Zedboard_Linux.sdk/SDK/SDK_Export/system.bit
+	/home/jlgutierrez/workspace/Zedboard_Linux/Zedboard_Linux.sdk/SDK/SDK_Export/u-boot.elf
+}
