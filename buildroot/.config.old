@@ -183,7 +183,7 @@ BR2_UCLIBC_VERSION_0_9_33=y
 BR2_UCLIBC_VERSION_STRING="0.9.33.2"
 BR2_UCLIBC_CONFIG="package/uclibc/uClibc-0.9.33.config"
 # BR2_TOOLCHAIN_BUILDROOT_LARGEFILE is not set
-BR2_TOOLCHAIN_BUILDROOT_INET_IPV6=y
+# BR2_TOOLCHAIN_BUILDROOT_INET_IPV6 is not set
 BR2_TOOLCHAIN_BUILDROOT_INET_RPC=y
 BR2_TOOLCHAIN_BUILDROOT_WCHAR=y
 BR2_TOOLCHAIN_BUILDROOT_LOCALE=y
@@ -235,7 +235,6 @@ BR2_PACKAGE_HOST_GDB=y
 # BR2_GDB_VERSION_7_4 is not set
 BR2_GDB_VERSION_7_5=y
 BR2_GDB_VERSION="7.5.1"
-BR2_INET_IPV6=y
 BR2_TOOLCHAIN_HAS_NATIVE_RPC=y
 BR2_USE_WCHAR=y
 BR2_ENABLE_LOCALE=y
@@ -865,7 +864,10 @@ BR2_PACKAGE_QT5_JSCORE_AVAILABLE=y
 # BR2_PACKAGE_ENSCRIPT is not set
 # BR2_PACKAGE_ERLANG is not set
 # BR2_PACKAGE_HASERL is not set
-# BR2_PACKAGE_JAMVM is not set
+
+#
+# jamvm needs a toolchain w/ IPv6
+#
 # BR2_PACKAGE_JIMTCL is not set
 BR2_PACKAGE_LUA=y
 BR2_PACKAGE_PROVIDES_LUAINTERPRETER="lua"
@@ -991,7 +993,10 @@ BR2_PACKAGE_PHP_EXT_ZLIB=y
 # BR2_PACKAGE_PHP_EXT_CURL is not set
 # BR2_PACKAGE_PHP_EXT_FTP is not set
 # BR2_PACKAGE_PHP_EXT_SNMP is not set
-# BR2_PACKAGE_PHP_EXT_SOCKETS is not set
+
+#
+# sockets support needs a toolchain w/ IPv6
+#
 
 #
 # Process Control
@@ -1045,7 +1050,10 @@ BR2_PACKAGE_PHP_SAPI_CGI=y
 # BR2_PACKAGE_PYTHON is not set
 # BR2_PACKAGE_PYTHON3 is not set
 # BR2_PACKAGE_RUBY is not set
-# BR2_PACKAGE_TCL is not set
+
+#
+# tcl needs a toolchain w/ ipv6, threads
+#
 
 #
 # Libraries
@@ -1459,7 +1467,10 @@ BR2_PACKAGE_LIBCGI=y
 # libmnl needs a toolchain w/ largefile
 #
 # BR2_PACKAGE_LIBMODBUS is not set
-# BR2_PACKAGE_LIBNDP is not set
+
+#
+# libndp needs a toolchain w/ IPv6
+#
 
 #
 # libnetfilter_acct needs a toolchain w/ largefile
@@ -1477,6 +1488,10 @@ BR2_PACKAGE_LIBCGI=y
 # libnetfilter_cttimout needs a toolchain w/ largefile
 #
 # BR2_PACKAGE_LIBNETFILTER_LOG is not set
+
+#
+# libnetfilter_queue needs a toolchain w/ largefile, IPv6
+#
 # BR2_PACKAGE_LIBNFNETLINK is not set
 
 #
@@ -1484,12 +1499,18 @@ BR2_PACKAGE_LIBCGI=y
 #
 # BR2_PACKAGE_LIBNL is not set
 # BR2_PACKAGE_LIBOAUTH is not set
-# BR2_PACKAGE_LIBOPING is not set
+
+#
+# liboping needs a toolchain w/ IPv6
+#
 # BR2_PACKAGE_LIBOSIP2 is not set
 BR2_PACKAGE_LIBPCAP=y
 # BR2_PACKAGE_LIBRSYNC is not set
 # BR2_PACKAGE_LIBSOCKETCAN is not set
-# BR2_PACKAGE_LIBSHAIRPLAY is not set
+
+#
+# libshairplay needs a toolchain w/ IPv6, threads
+#
 # BR2_PACKAGE_LIBSOUP is not set
 # BR2_PACKAGE_LIBSTROPHE is not set
 # BR2_PACKAGE_LIBTIRPC is not set
@@ -1508,7 +1529,10 @@ BR2_PACKAGE_LIBPCAP=y
 #
 # omniORB needs a toolchain w/ C++, threads
 #
-# BR2_PACKAGE_OPENPGM is not set
+
+#
+# openpgm needs a toolchain w/ wchar, threads, IPv6
+#
 # BR2_PACKAGE_ORTP is not set
 # BR2_PACKAGE_QDECODER is not set
 # BR2_PACKAGE_RTMPDUMP is not set
@@ -1698,7 +1722,10 @@ BR2_PACKAGE_PCRE=y
 #
 # BR2_PACKAGE_AESPIPE is not set
 # BR2_PACKAGE_BC is not set
-# BR2_PACKAGE_COLLECTD is not set
+
+#
+# collectd needs a toolchain w/ IPv6, threads
+#
 # BR2_PACKAGE_EMPTY is not set
 # BR2_PACKAGE_GOOGLEFONTDIRECTORY is not set
 # BR2_PACKAGE_HAVEGED is not set
@@ -1722,7 +1749,10 @@ BR2_PACKAGE_PCRE=y
 #
 # Networking applications
 #
-# BR2_PACKAGE_AICCU is not set
+
+#
+# aiccu needs a toolchain w/ IPv6, wchar, threads
+#
 
 #
 # aircrack-ng needs a toolchain w/ largefile, threads
@@ -1735,15 +1765,25 @@ BR2_PACKAGE_PCRE=y
 #
 # bcusdk needs a toolchain w/ C++
 #
+
+#
+# bind needs a toolchain w/ largefile, IPv6
+#
 # BR2_PACKAGE_BLUEZ_UTILS is not set
-# BR2_PACKAGE_BMON is not set
+
+#
+# bmon needs a toolchain w/ IPv6
+#
 # BR2_PACKAGE_BOA is not set
 # BR2_PACKAGE_BRIDGE_UTILS is not set
 # BR2_PACKAGE_BWM_NG is not set
 # BR2_PACKAGE_CAN_UTILS is not set
 # BR2_PACKAGE_CHRONY is not set
 # BR2_PACKAGE_CIVETWEB is not set
-# BR2_PACKAGE_CONNMAN is not set
+
+#
+# connman needs a toolchain w/ IPv6, wchar, threads, resolver
+#
 
 #
 # conntrack-tools needs a toolchain w/ IPv6, largefile, threads
@@ -1758,14 +1798,20 @@ BR2_PACKAGE_DHCPCD=y
 BR2_PACKAGE_DHCPDUMP=y
 # BR2_PACKAGE_DNSMASQ is not set
 # BR2_PACKAGE_DROPBEAR is not set
-# BR2_PACKAGE_EBTABLES is not set
+
+#
+# ebtables needs a toolchain w/ IPv6
+#
 # BR2_PACKAGE_ETHTOOL is not set
 # BR2_PACKAGE_FPING is not set
 # BR2_PACKAGE_GESFTPSERVER is not set
 # BR2_PACKAGE_HIAWATHA is not set
 # BR2_PACKAGE_HOSTAPD is not set
 # BR2_PACKAGE_HTTPING is not set
-# BR2_PACKAGE_IFTOP is not set
+
+#
+# iftop needs a toolchain w/ IPv6, threads
+#
 # BR2_PACKAGE_IGH_ETHERCAT is not set
 # BR2_PACKAGE_IGMPPROXY is not set
 # BR2_PACKAGE_INADYN is not set
@@ -1780,7 +1826,10 @@ BR2_PACKAGE_DHCPDUMP=y
 # ipset needs a toolchain w/ largefile
 #
 # BR2_PACKAGE_IPTABLES is not set
-# BR2_PACKAGE_IPTRAF_NG is not set
+
+#
+# iptraf-ng needs a toolchain w/ IPv6
+#
 # BR2_PACKAGE_IPUTILS is not set
 # BR2_PACKAGE_IW is not set
 
@@ -1828,7 +1877,10 @@ BR2_PACKAGE_LIGHTTPD_LUA=y
 # BR2_PACKAGE_MTR is not set
 # BR2_PACKAGE_NBD is not set
 # BR2_PACKAGE_NCFTP is not set
-# BR2_PACKAGE_NDISC6 is not set
+
+#
+# ndisc6 needs a toolchain w/ IPv6
+#
 # BR2_PACKAGE_NETATALK is not set
 # BR2_PACKAGE_NETPLUG is not set
 BR2_PACKAGE_NETSNMP=y
@@ -1858,12 +1910,21 @@ BR2_PACKAGE_NETSNMP_ENABLE_DEBUGGING=y
 # BR2_PACKAGE_NOIP is not set
 # BR2_PACKAGE_NTP is not set
 # BR2_PACKAGE_NUTTCP is not set
-# BR2_PACKAGE_OLSR is not set
+
+#
+# olsr needs a toolchain w/ IPv6, threads
+#
 # BR2_PACKAGE_OPENNTPD is not set
-# BR2_PACKAGE_OPENOBEX is not set
+
+#
+# openobex needs a toolchain w/ IPv6
+#
 # BR2_PACKAGE_OPENSSH is not set
 # BR2_PACKAGE_OPENSWAN is not set
-# BR2_PACKAGE_OPENVPN is not set
+
+#
+# openvpn needs a toolchain w/ IPv6
+#
 # BR2_PACKAGE_P910ND is not set
 # BR2_PACKAGE_PORTMAP is not set
 # BR2_PACKAGE_PPPD is not set
@@ -1873,7 +1934,10 @@ BR2_PACKAGE_NETSNMP_ENABLE_DEBUGGING=y
 BR2_PACKAGE_PTPD=y
 # BR2_PACKAGE_PTPD2 is not set
 # BR2_PACKAGE_QUAGGA is not set
-# BR2_PACKAGE_RADVD is not set
+
+#
+# radvd needs a toolchain w/ IPv6
+#
 # BR2_PACKAGE_RPCBIND is not set
 # BR2_PACKAGE_RSH_REDONE is not set
 # BR2_PACKAGE_RSYNC is not set
@@ -1891,8 +1955,14 @@ BR2_PACKAGE_PTPD=y
 #
 # sconeserver needs a toolchain w/ C++, NPTL
 #
-# BR2_PACKAGE_SER2NET is not set
-# BR2_PACKAGE_SMCROUTE is not set
+
+#
+# ser2net needs a toolchain w/ IPv6
+#
+
+#
+# smcroute needs a toolchain w/ IPv6
+#
 # BR2_PACKAGE_SOCAT is not set
 # BR2_PACKAGE_SOCKETCAND is not set
 BR2_PACKAGE_SPAWN_FCGI=y
@@ -1909,7 +1979,10 @@ BR2_PACKAGE_SPAWN_FCGI=y
 # BR2_PACKAGE_THTTPD is not set
 # BR2_PACKAGE_TINYHTTPD is not set
 # BR2_PACKAGE_TN5250 is not set
-# BR2_PACKAGE_TRANSMISSION is not set
+
+#
+# transmission needs a toolchain w/ IPv6, threads
+#
 
 #
 # tvheadend needs a toolchain w/ largefile, IPv6, NPTL, headers >= 3.2
@@ -1926,7 +1999,10 @@ BR2_PACKAGE_SPAWN_FCGI=y
 #
 # ushare needs a toolchain w/ largefile, threads
 #
-# BR2_PACKAGE_USSP_PUSH is not set
+
+#
+# ussp-push needs a toolchain w/ wchar, IPv6, threads, dynamic library
+#
 # BR2_PACKAGE_VDE2 is not set
 # BR2_PACKAGE_VPNC is not set
 # BR2_PACKAGE_VSFTPD is not set
