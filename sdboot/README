@@ -1,0 +1,19 @@
+boot.bin has been generated using Vivado with:
+	system.bin (generated with Vivado HDL)
+	u-boot (generated with buildroot)
+	zynq_fbsl_0.elf (generated with Vivado SDK)
+
+the_ROM_image:
+{
+	[bootloader]./SDK_Export/zynq_fbsl_0/Debug/zynq_fbsl_0.elf
+	./SDK_Export/system.bit
+	./SDK_Export/u-boot.elf
+}
+
+
+Usage:
+Copy boot.bin in the SD card and configure the zedboard jumpers as shown to load the kernel image (uImage) and root file system from a FTP/NFS server:
+
+| |X|X| | |  
+|X|X|X|X|X| 
+|X| | |X|X|
