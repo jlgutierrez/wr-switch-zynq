@@ -20,6 +20,18 @@ Folder Description
 * xilinx - Some tests
 
 
+Adding New Features & Programms
+===============================
+By default, buildroot configures a set of tools, programs and libraries complete enough to work with. If you need to include new programs you just need to run the following makes in the buildroot folder:
+
+* make xconfig: for buildroot configuration (libraries, programs, daemons, etc)
+* make linux-xconfig: for linux kernel customization
+
+For more info please visit the Buildroot website: http://buildroot.uclibc.org/downloads/manual/manual.html
+
+NOTE: If you want to include your own files or programs, just copy them in the buildroot/userspace folder and they will be added to the uramdisk image after "make" command.
+
+
 Usage & Installation
 ====================
 At this point this project targets (and has been prepared) to load the boot.bin boot file from the SD card.
