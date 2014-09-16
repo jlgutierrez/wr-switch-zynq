@@ -474,6 +474,9 @@ source "package/python-simplejson/Config.in"
 source "package/python-thrift/Config.in"
 source "package/python-tornado/Config.in"
 source "package/python-versiontools/Config.in"
+source "package/python-pika/Config.in"
+source "package/python-twisted/Config.in"
+source "package/python-pyopenssl/Config.in"
 endmenu
 endif
 source "package/ruby/Config.in"

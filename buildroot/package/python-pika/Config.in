@@ -1,0 +1,8 @@
+config BR2_PACKAGE_PYTHON_PIKA
+        bool "python-pika"
+    depends on BR2_PACKAGE_PYTHON_SSL
+	depends on BR2_PACKAGE_PYTHON
+        help
+          This is a comment that explains what pika is.
+
+	  https://github.com/pika/pika/tree/0.9.13

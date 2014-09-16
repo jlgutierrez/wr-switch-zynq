@@ -31,7 +31,7 @@ HOST_PYTHON_CONF_OPT += 	\
 	--disable-bsddb		\
 	--disable-test-modules	\
 	--disable-bz2		\
-	--disable-ssl		\
+#	--disable-ssl		\
 	--disable-pyo-build
 
 # Make sure that LD_LIBRARY_PATH overrides -rpath.
@@ -85,8 +85,6 @@ endif
 
 ifeq ($(BR2_PACKAGE_PYTHON_SSL),y)
 PYTHON_DEPENDENCIES += openssl
-else
-PYTHON_CONF_OPT += --disable-ssl
 endif
 
 ifneq ($(BR2_PACKAGE_PYTHON_CODECSCJK),y)

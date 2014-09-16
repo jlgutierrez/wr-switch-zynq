@@ -1,0 +1,7 @@
+config BR2_PACKAGE_PYTHON_PYOPENSSL
+        bool "python-pyopenssl"
+	depends on BR2_PACKAGE_PYTHON
+        help
+          This is a comment that explains what pika is.
+
+	  https://pypi.python.org/pypi/pyOpenSSL
