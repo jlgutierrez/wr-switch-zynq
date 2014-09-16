@@ -1,0 +1,32 @@
+diff --git a/kernel/spec-pci.c b/kernel/spec-pci.c
+index ff6c990..28209a1 100644
+--- a/kernel/spec-pci.c
++++ b/kernel/spec-pci.c
+@@ -20,6 +20,7 @@
+ #include <linux/pci.h>
+ #include <linux/io.h>
+ #include <asm/unaligned.h>
++#include <linux/slab.h> //addbed by jlgutierrez
+ 
+ #include "spec.h"
+ #include "loader-ll.h"
+@@ -111,7 +112,7 @@ static int spec_probe(struct pci_dev *pdev,
+ 		 * This should be "4" but arch/x86/kernel/apic/io_apic.c
+ 		 * says "x86 doesn't support multiple MSI yet".
+ 		 */
+-		ret = pci_enable_msi_block(pdev, 1);
++		//ret = pci_enable_msi_block(pdev, 1); //commented by jlgutierrez
+ 		if (ret < 0)
+ 			dev_err(&pdev->dev, "%s: enable msi block: error %i\n",
+ 				__func__, ret);
+@@ -162,8 +163,8 @@ out_unmap:
+ 		spec->area[i] = NULL;
+ 	}
+ 	pci_set_drvdata(pdev, NULL);
+-	if (spec_use_msi)
+-		pci_disable_msi(pdev);
++	/*if (spec_use_msi)
++		pci_disable_msi(pdev);*/ //Commented by jlgutierrez
+ 	pci_disable_device(pdev);
+ 	kfree(spec);
+ 	return ret;

@@ -1,0 +1,18 @@
+diff --git a/kernel/fmc-sdb.c b/kernel/fmc-sdb.c
+index 4603fdb..35d1e1d 100644
+--- a/kernel/fmc-sdb.c
++++ b/kernel/fmc-sdb.c
+@@ -9,10 +9,10 @@
+  */
+ #include <linux/module.h>
+ #include <linux/slab.h>
+-#include <linux/fmc.h>
+-#include <linux/sdb.h>
++#include "include/linux/fmc.h"
++#include "include/linux/sdb.h"
+ #include <linux/err.h>
+-#include <linux/fmc-sdb.h>
++#include "include/linux/fmc-sdb.h"
+ #include <asm/byteorder.h>
+ 
+ static uint32_t __sdb_rd(struct fmc_device *fmc, unsigned long address,
