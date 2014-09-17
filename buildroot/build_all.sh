@@ -30,12 +30,14 @@ else
 	make
 	export CROSS_COMPILE=$PWD/output/host/usr/bin/arm-linux-
 fi
-
-#Prueba
-# Compilador cruzado del buildroot de WRS
-# LINUX headers del WRS
-export CROSS_COMPILE=/home/jlgutierrez/wr/wr-switch-zynq/buildroot/output/host/usr/bin/arm-linux-
-export LINUX=/home/jlgutierrez/wr/wr-switch-zynq/buildroot/output/build/linux-3.14.4
+if [ -d output/build/linux-3.14.4 ]; then
+export LINUX=$PWD/output/build/linux-3.14.4
+else 
+	echo -e "\e[91mError: linux-3.14.4 not found in buildroot build folder\e[39m"
+	echo -e "\e[91mExiting...\e[39m"
+	make
+	
+fi
 
 echo "*********************************************************************"
 echo "**** Compiling userspace with the following parameters:"
@@ -69,91 +71,95 @@ cd $BUILDROOT
 #echo "Kernel patches applied"
 #sleep 5
 
-## Compile Kernel Drivers ###
-echo -e "\e[92mCompiling kernel drivers\e[39m"
-cd $PWD/kernel
-make clean
-make all
-echo -e "\e[92mKernel drivers compiled\e[39m"
-sleep 5
+### Compile Kernel Drivers ###
+#echo -e "\e[92mCompiling kernel drivers\e[39m"
+#cd $PWD/kernel
+#make clean
+#make all
+#echo -e "\e[92mKernel drivers compiled\e[39m"
+#sleep 5
 
-#Copy .ko by hand
-echo -e "\e[92mCopying kernel drivers to target filesystem\e[39m"
-mkdir -p $WR_INSTALL_ROOT/lib/modules
-cp at91_softpwm/*.ko $WR_INSTALL_ROOT/lib/modules
-cp wr_nic/*.ko $WR_INSTALL_ROOT/lib/modules
-cp wr_pstats/*.ko $WR_INSTALL_ROOT/lib/modules
-cp wr_rtu/*.ko $WR_INSTALL_ROOT/lib/modules
-cp wr_vic/*.ko $WR_INSTALL_ROOT/lib/modules
-cd $BUILDROOT
-echo -e "\e[92mKernel drivers copied\e[39m"
-sleep 5
-
-
-# subdirectories we want to compile
-cd $PWD/$USERSPACE/libptpnetif
-make clean
-make
-cd $BUILDROOT
-echo -e "\e[92mlibptpnetif built\e[39m"
-sleep 5
+##Copy .ko by hand
+#echo -e "\e[92mCopying kernel drivers to target filesystem\e[39m"
+#mkdir -p $WR_INSTALL_ROOT/lib/modules
+#cp at91_softpwm/*.ko $WR_INSTALL_ROOT/lib/modules
+#cp wr_nic/*.ko $WR_INSTALL_ROOT/lib/modules
+#cp wr_pstats/*.ko $WR_INSTALL_ROOT/lib/modules
+#cp wr_rtu/*.ko $WR_INSTALL_ROOT/lib/modules
+#cp wr_vic/*.ko $WR_INSTALL_ROOT/lib/modules
+#cd $BUILDROOT
+#echo -e "\e[92mKernel drivers copied\e[39m"
+#sleep 5
 
 
-cd $PWD/$USERSPACE/mini-rpc
-make clean
-make
-cd $BUILDROOT
-echo -e "\e[92mmini-rpc built\e[39m"
-sleep 5
+## subdirectories we want to compile
+#cd $PWD/$USERSPACE/libptpnetif
+#make clean
+#make
+#cd $BUILDROOT
+#echo -e "\e[92mlibptpnetif built\e[39m"
+#sleep 5
 
 
-cd $PWD/$USERSPACE/libswitchhw
-make clean
-make
-cd $BUILDROOT
-echo -e "\e[92mlibswitchhw  built\e[39m"
-sleep 5
+#cd $PWD/$USERSPACE/mini-rpc
+#make clean
+#make
+#cd $BUILDROOT
+#echo -e "\e[92mmini-rpc built\e[39m"
+#sleep 5
 
 
-cd $PWD/$USERSPACE/wrsw_hal
-make clean
-make
-cd $BUILDROOT
-echo -e "\e[92mwrsw_hal built\e[39m"
-sleep 5
+#cd $PWD/$USERSPACE/libswitchhw
+#make clean
+#make
+#cd $BUILDROOT
+#echo -e "\e[92mlibswitchhw  built\e[39m"
+#sleep 5
 
-cd $PWD/$USERSPACE/wrsw_rtud
-make clean
-make
-cd $BUILDROOT
-echo -e "\e[92mwrsw_rtud built\e[39m"
-sleep 5
 
-cd $PWD/$USERSPACE/ptp-noposix
-make clean
-make
-cd $BUILDROOT
-echo -e "\e[92mptp-noposix built\e[39m"
-sleep 5
+#cd $PWD/$USERSPACE/wrsw_hal
+#make clean
+#make
+#cd $BUILDROOT
+#echo -e "\e[92mwrsw_hal built\e[39m"
+#sleep 5
 
-cd $PWD/$USERSPACE/tools
-make clean
-make 
-make install
-cd $BUILDROOT
-echo -e "\e[92mtools built\e[39m"
-sleep 5
+#cd $PWD/$USERSPACE/wrsw_rtud
+#make clean
+#make
+#cd $BUILDROOT
+#echo -e "\e[92mwrsw_rtud built\e[39m"
+#sleep 5
 
-#Let's now copy binaries to the generated buildroot filesystem#
-echo "do not forget to copy binaries"
-echo "make buildroot again"
+#cd $PWD/$USERSPACE/ptp-noposix
+#make clean
+#make
+#cd $BUILDROOT
+#echo -e "\e[92mptp-noposix built\e[39m"
+#sleep 5
 
-## Install (copy) drivers .ko, binaries and libraries to target/
-cd $PWD/$USERSPACE/
-make install
-cd $BUILDROOT
+#cd $PWD/$USERSPACE/tools
+#make clean
+#make 
+#make install
+#cd $BUILDROOT
+#echo -e "\e[92mtools built\e[39m"
+#sleep 5
 
+##Let's now copy binaries to the generated buildroot filesystem#
+#echo "do not forget to copy binaries"
+#echo "make buildroot again"
+
+### Install (copy) drivers .ko, binaries and libraries to target/
+#cd $PWD/$USERSPACE/
+#make install
+#cd $BUILDROOT
+
+
+## Compile Spec drivers
+./spec-sw-drivers.sh
 ## Re-Generate root filesystem
+cd $BUILDROOT
 make 
 
 ## Run copy_to_tftpfolder 
