@@ -19,8 +19,7 @@ WR_INSTALL_ROOT=$PWD/output/target/wr
 ## Set ARCH & CROSS_COMPILE
 export ARCH=arm
 
-# Check own buildroot cross-compiler exists
-
+# Check own buildroot cross-compiler exists and zedboard defconfig
 if [ -f output/host/usr/bin/arm-linux-gcc ]; then
 export CROSS_COMPILE=$PWD/output/host/usr/bin/arm-linux-
 else 
@@ -28,6 +27,14 @@ else
 	echo -e "\e[91mPlease compile buildroot first\e[39m"
 	echo "Running make to generate buildroot cross-compiler"
 	make
+	if [ -f output/build/linux-3.14.4/arch/arm/configs/xilinx_zynq_defconfig ]; then
+		echo "xilinx_zynq_defconfig file found..."
+	else
+		echo "xilinx_zynq_defconfig not found. Copying from buildroot folder to destination"
+		cp xilinx_zynq_defconfig output/build/linux-3.14.4/arch/arm/configs/xilinx_zynq_defconfig
+		make
+	fi
+	
 	export CROSS_COMPILE=$PWD/output/host/usr/bin/arm-linux-
 fi
 if [ -d output/build/linux-3.14.4 ]; then
